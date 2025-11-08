@@ -1,18 +1,27 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\StorytellingController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('admin.login');
 });
 
-Route::prefix('admin')->group(function () {
-    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('admin.login');
-    Route::post('/login', [AuthController::class, 'login'])->name('admin.login.submit');
+Route::prefix('admin')->name('admin.')->group(function () {
+    // Guest
+    Route::middleware('guest:admin')->group(function () {
+        Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+        Route::post('login', [AuthController::class, 'login']);
+    });
 
+    // Authenticated
     Route::middleware('auth:admin')->group(function () {
-        Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard');
-        Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+        // CRUD Storytelling
+        Route::resource('storytellings', StorytellingController::class);
     });
 });

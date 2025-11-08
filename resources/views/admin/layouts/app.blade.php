@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin | Budaya Batak</title>
+    <title>@yield('title', 'Dashboard Admin')</title>
 
-    <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
-
-    <!-- AdminLTE -->
+    <!-- AdminLTE CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+    
     <style>
         :root {
             --primary: #DC2626;
@@ -586,282 +580,99 @@
             }
         }
     </style>
+
 </head>
-
 <body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
+<div class="wrapper">
 
+    <!-- NAVBAR -->
+    <nav class="main-header navbar navbar-expand navbar-light bg-white border-bottom">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#">
+                    <i class="fas fa-bars"></i>
+                </a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <span class="nav-link">Dashboard Admin</span>
+            </li>
+        </ul>
 
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-light">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button">
-                        <i class="fas fa-bars"></i>
-                    </a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link theme-toggle" href="#" id="themeToggle">
-                        <i class="fas fa-sun" id="themeIcon"></i>
-                        <span id="themeText">Terang</span>
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        <i class="far fa-user-circle"></i>
-                        <span class="d-none d-md-inline">Admin User</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-user-cog"></i> Profil
-                            </a>
-                        </li>
-                        <li>
-                            <form method="POST" action="#">
-                                <button type="submit" class="dropdown-item">
-                                    <i class="fas fa-sign-out-alt"></i> Logout
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <form action="{{ route('admin.logout') }}" method="POST">
+                    @csrf
+                    <button class="btn btn-link nav-link text-danger">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
 
-        <!-- Sidebar -->
-        <aside class="main-sidebar elevation-1">
-            <a href="#" class="brand-link">
-                <i class="fas fa-mountain brand-icon"></i>
-                <span class="brand-text">Budaya Batak</span>
-            </a>
+    <!-- SIDEBAR -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <a href="#" class="brand-link text-center">
+            <span class="brand-text font-weight-bold">Budaya Batak</span>
+        </a>
 
-            <div class="sidebar">
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-home"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
+        <div class="sidebar">
+            <nav class="mt-3">
+                <ul class="nav nav-pills nav-sidebar flex-column">
 
-                        <li class="nav-header">
-                            <i class="fas fa-layer-group"></i> Konten
-                        </li>
+                    <li class="nav-header"><i class="fas fa-layer-group"></i> Konten</li>
 
-                        <li class="nav-item">
-                            <a href="{{ route('admin.storytellings.index') }}"
-                                class="nav-link {{ request()->routeIs('admin.storytellings.*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-book-reader"></i>
-                                <p>Storytelling</p>
-                            </a>
-                        </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.storytellings.index') }}" class="nav-link {{ request()->routeIs('admin.storytellings.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-book-reader"></i>
+                            <p>Storytelling</p>
+                        </a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-book-open"></i><p>Ensiklopedi</p>
+                        </a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-book-open"></i>
-                                <p>Ensiklopedi</p>
-                            </a>
-                        </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-tags"></i><p>Kategori</p>
+                        </a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>Kategori</p>
-                            </a>
-                        </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-globe-asia"></i><p>Budaya</p>
+                        </a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-globe-asia"></i>
-                                <p>Budaya</p>
-                            </a>
-                        </li>
+                    <li class="nav-header"><i class="fas fa-cog"></i> Pengaturan</li>
 
-                        <li class="nav-header">
-                            <i class="fas fa-cog"></i> Pengaturan
-                        </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i><p>Admin</p>
+                        </a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>Admin</p>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </aside>
-
-        <!-- Content Wrapper -->
-        <div class="content-wrapper">
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2 align-items-center">
-                        <div class="col-sm-6">
-                            <h1>
-                                <i class="fas fa-chart-line"></i>
-                                Dashboard
-                            </h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item">
-                                    <a href="#"><i class="fas fa-home"></i> Home</a>
-                                </li>
-                                <li class="breadcrumb-item active">Dashboard</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="content">
-                <div class="container-fluid">
-                    <!-- Alert -->
-                    <div class="alert alert-success alert-dismissible fade show">
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <strong>Selamat datang!</strong>
-                            Anda berhasil masuk ke Admin Panel Budaya Batak
-                        </div>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-
-                    <!-- Stats -->
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="small-box bg-danger">
-                                <div class="inner">
-                                    <h3>24</h3>
-                                    <p><i class="fas fa-book-reader"></i> Storytelling</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-book"></i>
-                                </div>
-                                <div class="small-box-footer">
-                                    <span>Total Artikel</span>
-                                    <i class="fas fa-arrow-circle-right"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6">
-                            <div class="small-box bg-dark">
-                                <div class="inner">
-                                    <h3>38</h3>
-                                    <p><i class="fas fa-book-open"></i> Ensiklopedi</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-archive"></i>
-                                </div>
-                                <div class="small-box-footer">
-                                    <span>Total Entri</span>
-                                    <i class="fas fa-arrow-circle-right"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6">
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3>12</h3>
-                                    <p><i class="fas fa-tags"></i> Kategori</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-folder-open"></i>
-                                </div>
-                                <div class="small-box-footer">
-                                    <span>Total Kategori</span>
-                                    <i class="fas fa-arrow-circle-right"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6">
-                            <div class="small-box bg-warning">
-                                <div class="inner">
-                                    <h3>18</h3>
-                                    <p><i class="fas fa-globe-asia"></i> Budaya</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-map-marked-alt"></i>
-                                </div>
-                                <div class="small-box-footer">
-                                    <span>Total Budaya</span>
-                                    <i class="fas fa-arrow-circle-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Content Card -->
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title">
-                                        <i class="fas fa-history"></i>
-                                        Aktivitas Terbaru
-                                    </h3>
-                                </div>
-                                <div class="card-body">
-                                    <div class="stat-item">
-                                        <div class="stat-icon">
-                                            <i class="fas fa-plus"></i>
-                                        </div>
-                                        <div class="stat-content">
-                                            <h4>5 Artikel Baru</h4>
-                                            <p>Ditambahkan minggu ini</p>
-                                        </div>
-                                    </div>
-                                    <div class="stat-item">
-                                        <div class="stat-icon">
-                                            <i class="fas fa-edit"></i>
-                                        </div>
-                                        <div class="stat-content">
-                                            <h4>12 Artikel</h4>
-                                            <p>Diperbarui bulan ini</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title">
-                                        <i class="fas fa-info-circle"></i>
-                                        Info Sistem
-                                    </h3>
-                                </div>
-                                <div class="card-body">
-                                    <p><i class="fas fa-server text-danger"></i> <strong>Server:</strong> Online</p>
-                                    <p><i class="fas fa-database text-success"></i> <strong>Database:</strong>
-                                        Terhubung</p>
-                                    <p><i class="fas fa-clock text-info"></i> <strong>Update:</strong> 2 jam lalu</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                </ul>
+            </nav>
         </div>
+    </aside>
 
-        <footer class="main-footer">
-            <strong>© 2025 Budaya Batak</strong> · Melestarikan Warisan Leluhur
-        </footer>
+    <!-- CONTENT -->
+    <div class="content-wrapper">
+        @yield('content')
     </div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+    <!-- FOOTER -->
+    <footer class="main-footer text-center">
+        <strong>© {{ date('Y') }} Budaya Batak.</strong>
+    </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 
     <script>
         // Theme Toggle
@@ -895,6 +706,6 @@
             }
         }
     </script>
-</body>
 
+</body>
 </html>

@@ -18,7 +18,7 @@ class StorytellingController extends Controller
     {
         return view('admin.storytellings.create');
     }
-
+    
     public function store(Request $request)
     {
         $request->validate([

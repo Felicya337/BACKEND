@@ -3,14 +3,14 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CulturalController;
-use App\Http\Controllers\EnsiklopediController;
+use App\Http\Controllers\EnsiklopediaController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\StorytellingController;
 use App\Http\Controllers\AuthController;
 
 Route::apiResource('culturals', CulturalController::class);
 
-Route::apiResource('ensiklopedi', EnsiklopediController::class);
+Route::apiResource('ensiklopedia', EnsiklopediaController::class);
 
 Route::get('/kategori', [KategoriController::class, 'index']);
 Route::post('/kategori', [KategoriController::class, 'store']);

@@ -610,48 +610,74 @@
 
     <!-- SIDEBAR -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <a href="#" class="brand-link text-center">
+        <!-- Brand Logo -->
+        <a href="{{ route('admin.dashboard') }}" class="brand-link text-center">
             <span class="brand-text font-weight-bold">Budaya Batak</span>
         </a>
 
+        <!-- Sidebar -->
         <div class="sidebar">
+            <!-- Navigation -->
             <nav class="mt-3">
-                <ul class="nav nav-pills nav-sidebar flex-column">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+                    
+                    {{-- === HEADER KONTEN === --}}
+                    <li class="nav-header">
+                        <i class="fas fa-layer-group mr-1"></i> KONTEN
+                    </li>
 
-                    <li class="nav-header"><i class="fas fa-layer-group"></i> Konten</li>
-
+                    {{-- STORYTELLING --}}
                     <li class="nav-item">
-                        <a href="{{ route('admin.storytellings.index') }}" class="nav-link {{ request()->routeIs('admin.storytellings.*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.storytellings.index') }}" 
+                        class="nav-link {{ request()->routeIs('admin.storytellings.*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-book-reader"></i>
                             <p>Storytelling</p>
                         </a>
                     </li>
 
+                    {{-- ENSIKLOPEDI --}}
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-book-open"></i><p>Ensiklopedi</p>
+                        <a href="{{ route('admin.ensiklopedi.index') }}" 
+                        class="nav-link {{ request()->routeIs('admin.ensiklopedi.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-book-open"></i>
+                            <p>Ensiklopedi</p>
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-tags"></i><p>Kategori</p>
-                        </a>
-                    </li>
+                    {{-- KATEGORI --}}
+{{--
+<li class="nav-item">
+    <a href="{{ route('admin.kategori.index') }}" 
+    class="nav-link {{ request()->routeIs('admin.kategori.*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-tags"></i>
+        <p>Kategori</p>
+    </a>
+</li>
 
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-globe-asia"></i><p>Budaya</p>
-                        </a>
-                    </li>
+{{-- BUDAYA 
+<li class="nav-item">
+    <a href="{{ route('admin.budaya.index') }}" 
+    class="nav-link {{ request()->routeIs('admin.budaya.*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-globe-asia"></i>
+        <p>Budaya</p>
+    </a>
+</li>
 
-                    <li class="nav-header"><i class="fas fa-cog"></i> Pengaturan</li>
+{{-- === HEADER PENGATURAN === 
+<li class="nav-header">
+    <i class="fas fa-cog mr-1"></i> PENGATURAN
+</li>
 
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i><p>Admin</p>
-                        </a>
-                    </li>
+{{-- ADMIN USER
+<li class="nav-item">
+    <a href="{{ route('admin.admins.index') }}" 
+    class="nav-link {{ request()->routeIs('admin.admins.*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-users"></i>
+        <p>Admin</p>
+    </a>
+</li>
+--}}
+
 
                 </ul>
             </nav>

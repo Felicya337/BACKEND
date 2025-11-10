@@ -17,6 +17,8 @@ Route::post('/kategori', [KategoriController::class, 'store']);
 Route::get('/kategori/{id}', [KategoriController::class, 'show']);
 Route::put('/kategori/{id}', [KategoriController::class, 'update']);
 Route::delete('/kategori/{id}', [KategoriController::class, 'destroy']);
+Route::get('/ensiklopedia/slug/{slug}', [EnsiklopediaController::class, 'showBySlug']);
+
 
 
 Route::get('/storytelling/public', [StorytellingController::class, 'showPublic']); // untuk user umum

@@ -662,7 +662,8 @@
 
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.ensiklopedi.index') }}" class="nav-link"
+                                class="nav-link {{ request()->routeIs('admin.ensiklopedi.*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-book-open"></i>
                                 <p>Ensiklopedi</p>
                             </a>

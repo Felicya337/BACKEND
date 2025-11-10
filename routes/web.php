@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EnsiklopediController;
 use App\Http\Controllers\Admin\StorytellingController;
 
 Route::get('/', function () {
@@ -23,5 +24,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // CRUD Storytelling
         Route::resource('storytellings', StorytellingController::class);
+
+        Route::resource('ensiklopedi',EnsiklopediController::class);
     });
 });

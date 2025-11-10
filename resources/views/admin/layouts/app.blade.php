@@ -11,7 +11,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    
+
     <style>
         :root {
             --primary: #DC2626;
@@ -620,7 +620,14 @@
             <!-- Navigation -->
             <nav class="mt-3">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
-                    
+
+                    {{-- === DASHBOARD === --}}
+                    <li class="nav-item">
+                        <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
                     {{-- === HEADER KONTEN === --}}
                     <li class="nav-header">
                         <i class="fas fa-layer-group mr-1"></i> KONTEN
@@ -628,7 +635,7 @@
 
                     {{-- STORYTELLING --}}
                     <li class="nav-item">
-                        <a href="{{ route('admin.storytellings.index') }}" 
+                        <a href="{{ route('admin.storytellings.index') }}"
                         class="nav-link {{ request()->routeIs('admin.storytellings.*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-book-reader"></i>
                             <p>Storytelling</p>
@@ -637,40 +644,49 @@
 
                     {{-- ENSIKLOPEDI --}}
                     <li class="nav-item">
-                        <a href="{{ route('admin.ensiklopedi.index') }}" 
+                        <a href="{{ route('admin.ensiklopedi.index') }}"
                         class="nav-link {{ request()->routeIs('admin.ensiklopedi.*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-book-open"></i>
                             <p>Ensiklopedi</p>
                         </a>
                     </li>
 
+                    {{-- ENSIKLOPEDI --}}
+                    <li class="nav-item">
+                        <a href="{{ route('admin.tokohs.index') }}"
+                        class="nav-link {{ request()->routeIs('admin.ensiklopedi.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-book-open"></i>
+                            <p>Tokoh/Maestro</p>
+                        </a>
+                    </li>
+
                     {{-- KATEGORI --}}
 {{--
 <li class="nav-item">
-    <a href="{{ route('admin.kategori.index') }}" 
+    <a href="{{ route('admin.kategori.index') }}"
     class="nav-link {{ request()->routeIs('admin.kategori.*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-tags"></i>
         <p>Kategori</p>
     </a>
 </li>
 
-{{-- BUDAYA 
+{{-- BUDAYA
 <li class="nav-item">
-    <a href="{{ route('admin.budaya.index') }}" 
+    <a href="{{ route('admin.budaya.index') }}"
     class="nav-link {{ request()->routeIs('admin.budaya.*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-globe-asia"></i>
         <p>Budaya</p>
     </a>
 </li>
 
-{{-- === HEADER PENGATURAN === 
+{{-- === HEADER PENGATURAN ===
 <li class="nav-header">
     <i class="fas fa-cog mr-1"></i> PENGATURAN
 </li>
 
 {{-- ADMIN USER
 <li class="nav-item">
-    <a href="{{ route('admin.admins.index') }}" 
+    <a href="{{ route('admin.admins.index') }}"
     class="nav-link {{ request()->routeIs('admin.admins.*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-users"></i>
         <p>Admin</p>

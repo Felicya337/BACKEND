@@ -654,9 +654,18 @@
                     {{-- ENSIKLOPEDI --}}
                     <li class="nav-item">
                         <a href="{{ route('admin.tokohs.index') }}"
-                        class="nav-link {{ request()->routeIs('admin.ensiklopedi.*') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-book-open"></i>
+                        class="nav-link {{ request()->routeIs('admin.tokohs.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-masks-theater"></i>
                             <p>Tokoh/Maestro</p>
+                        </a>
+                    </li>
+
+                    {{-- AKUN PENJUAL --}}
+                    <li class="nav-item">
+                        <a href="{{ route('admin.penjual.index') }}"
+                        class="nav-link {{ request()->routeIs('admin.penjua;.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-masks-theater"></i>
+                            <p>Akun Penjual</p>
                         </a>
                     </li>
 

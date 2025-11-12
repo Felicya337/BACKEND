@@ -7,6 +7,9 @@ use App\Http\Controllers\Admin\EnsiklopediController;
 use App\Http\Controllers\Admin\StorytellingController;
 use App\Http\Controllers\Admin\TokohController;
 use App\Http\Controllers\PenjualController;
+use App\Http\Controllers\Admin\MicroLearningController;
+use App\Http\Controllers\Admin\KuisBudayaController;
+
 
 Route::get('/', function () {
     return redirect()->route('admin.login');
@@ -30,6 +33,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('ensiklopedi',EnsiklopediController::class);
 
         Route::resource('tokohs', TokohController::class);
+
+        Route::resource('microlearning', MicroLearningController::class);
+        Route::resource('kuisbudaya', KuisBudayaController::class);
 
         Route::get('/penjual', [PenjualController::class, 'index'])->name('penjual.index');
         Route::delete('/penjual/{id}', [PenjualController::class, 'destroy'])->name(' penjual.destroy');
